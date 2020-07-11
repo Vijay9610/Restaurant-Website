@@ -28,8 +28,7 @@
                     <li class="nav-item"><a class="nav-link" href="contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>
                 <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
-                    <span class="fa fa-sign-in"></span> Login</a>
+                    <a id="login"><span class="fa fa-sign-in"></span> Login</a>
                 </span>
             </div>
         </div>
@@ -41,7 +40,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Login </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -63,7 +62,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                            <button id="login_cancel" type="button" class="btn btn-secondary btn-sm ml-auto">Cancel</button>
                             <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>        
                         </div>
                     </form>
@@ -85,7 +84,7 @@
                     </div>
                     <div class="col-12 col-sm-6 align-self-center">
                         <!-- <button type="submit" class="btn btn-block btn-sm btn-warning">Reserve Table</button>                         -->
-                        <a class="btn btn-block btn-sm btn-warning" role="button" data-toggle="modal" data-target="#reserve_table">Reserve Table</a>
+                        <a id="reserve_button" class="btn btn-block btn-sm btn-warning" role="button">Reserve Table</a>
                     </div>
                 </div>    
             </div>
@@ -96,9 +95,9 @@
         <div class="modal-dialog modal-lg" role="content">
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header bg-warning">
+                <div class="modal-header">
                     <h4 class="modal-title">Reserve a Table </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -150,7 +149,7 @@
                         </div>
                         <div class="form-row">
                             <div class="col-4 offset-2">
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                                <button id="reserve_cancel" type="button" class="btn btn-secondary btn-sm">Cancel</button>
                                 <button type="submit" class="btn btn-primary btn-sm">Reserve</button>        
                             </div>                                
                         </div>
@@ -332,6 +331,32 @@
             
         });
        
+    });
+
+    // JQuery code for controlling modals
+    $(document).ready(function(){
+        //JQuery code for login modal buttons
+        $("#login").click(function(){
+            $("#loginModal").modal('toggle');
+        });
+        $("#login_cancel").click(function(){
+            $("#loginModal").modal('hide');
+        });
+        
+        //JQuery code for close button
+        $(".close").click(function(){
+            $("#loginModal").modal('hide');
+            $("#reserve_table").modal('hide');
+        });
+
+        //JQuery code for reserve table modal buttons
+        $("#reserve_button").click(function(){
+            $("#reserve_table").modal('toggle');
+        });
+
+        $("#reserve_cancel").click(function(){
+            $("#reserve_table").modal('hide');
+        });
     });
 </script>
 </body>
